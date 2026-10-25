@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0d1117;
+  --color-canvas: #010409;
+  --color-card: #161b22;
+  --color-border: #30363d;
+  --color-muted: #8b949e;
+  --color-text: #e6edf3;
+  --color-link: #58a6ff;
+  --color-success: #3fb950;
+  --color-danger: #f85149;
+  --control-min-height: 2.75rem;
+  --card-radius: 0.75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply min-h-screen bg-github-bg font-sans text-github-text antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-github-link;
+  }
+}
+
+@layer components {
+  .control-field {
+    margin-top: 0.25rem;
+    min-height: var(--control-min-height);
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    padding: 0.5rem 0.75rem;
+    color: var(--color-text);
+  }
+
+  .control-field:focus {
+    border-color: var(--color-link);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.25);
+  }
+
+  .control-field:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .auth-shell {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(88, 166, 255, 0.18), transparent 55%),
+      radial-gradient(900px 500px at 100% 10%, rgba(63, 185, 80, 0.16), transparent 50%),
+      linear-gradient(180deg, #010409 0%, #0d1117 45%, #161b22 100%);
+  }
+
+  .auth-gradient-text {
+    background: linear-gradient(90deg, #58a6ff 0%, #3fb950 55%, #d2a8ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .auth-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(40px);
+    opacity: 0.55;
+    animation: auth-float 12s ease-in-out infinite;
+  }
+
+  .auth-orb-one {
+    top: 8%;
+    left: 8%;
+    height: 16rem;
+    width: 16rem;
+    background: #388bfd;
+  }
+
+  .auth-orb-two {
+    right: 6%;
+    bottom: 12%;
+    height: 18rem;
+    width: 18rem;
+    background: #238636;
+    animation-delay: -4s;
+  }
+
+  .auth-orb-three {
+    top: 40%;
+    left: 42%;
+    height: 10rem;
+    width: 10rem;
+    background: #a371f7;
+    animation-delay: -7s;
+  }
+}
+
+@keyframes auth-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -22px, 0) scale(1.08);
+  }
+}
+
